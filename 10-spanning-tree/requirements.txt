@@ -1,0 +1,2 @@
+git+https://github.com/JakubSido/adthelpers.git
+networkx

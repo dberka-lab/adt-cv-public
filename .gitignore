@@ -1,0 +1,7 @@
+02-market/data
+05-SHO_gen/output/*
+05-SHO_gen/.meta/*
+*__pycache__
+
+*/cities/*
+.DS_Store
