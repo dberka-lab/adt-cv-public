@@ -1,4 +1,5 @@
 02-market/data
+03-market/output
 05-SHO_gen/output/*
 05-SHO_gen/.meta/*
 *__pycache__
