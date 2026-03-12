@@ -7,18 +7,39 @@ N_RUNS = 5
 
 def load_customers(shop_path: str) -> list[str]:
     """Načte data z konkrétní cesty a vrací seznam ID zákazníků."""
-    return []
+    res = []
+
+    try:
+        with open(shop_path, "r", encoding="utf-8") as file:
+            file.readline()
+            for line in file:
+                line_data = line.strip().split(";")
+                cid = line_data[2]
+                res.append(cid)
+    except FileNotFoundError:
+        print("File not found")
+
+    return res
 
 
 def check_ckpt_list(customers: list[str]) -> list[str]:
     """Varianta A: vrátí seznam unikátních zákazníků v seznamu."""
     seen: list[str] = []
+
+    for customer in customers:
+        if customer not in seen:
+            seen.append(customer)
+
     return seen
 
 
 def check_ckpt_set(customers: list[str]) -> set[str]:
     """Varianta B: vrátí množinu unikátních zákazníků v množin."""
     seen: set[str] = set()
+
+    for customer in customers:
+        seen.add(customer)
+
     return seen
 
 
@@ -28,8 +49,7 @@ def measure(
     n_runs: int = N_RUNS,
 ) -> float:
     """Změří čas běhu funkce func(customers) nástrojem timeit."""
-    return -1.0
-
+    return timeit.timeit(lambda: func(customers), number=n_runs)
 
 def experiment(data_path: str, city: str, shop: str, day: str = "1-Mon") -> None:
     shop_path = os.path.join(data_path, "output", city, day, f"{shop}.txt")

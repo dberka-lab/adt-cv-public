@@ -11,7 +11,7 @@
             "request": "launch",
             "program": "${file}",
             "console": "integratedTerminal",
-            "args": ["03-market/output"]
+            "args": ["04-complexity_b/cities"]
         }
     ]
 }
