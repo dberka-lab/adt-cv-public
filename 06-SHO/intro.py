@@ -9,9 +9,13 @@ def main() -> None:
     queue.append("A")
     queue.append("B")
     queue.append("C")
+    queue.append("D")
     print(f"Fronta po naplnění: {queue}")
 
     # 3. Odeberte prvek ze začátku
+    item = queue.popleft()
+    print(f"Odebráno: {item}")
+
     item = queue.popleft()
     print(f"Odebráno: {item}")
 
