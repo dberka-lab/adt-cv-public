@@ -1,18 +1,18 @@
 import functools
-
 from utils import measure_time
-
 
 def fib(n: int) -> int:
     if n <= 1:
         return n
     return fib(n - 1) + fib(n - 2)
 
+
 @functools.cache
 def fib_cache(n: int) -> int:
     if n <= 1:
         return n
     return fib_cache(n - 1) + fib_cache(n - 2)
+
 
 def fib_mem(n: int, lookup: dict[int, int]) -> int:
     if n <= 1:
@@ -24,6 +24,18 @@ def fib_mem(n: int, lookup: dict[int, int]) -> int:
     return lookup[n]
 
 
+def fib_iter(n: int) -> int:
+    if n <= 1:
+        return n
+
+    data = [0, 1]
+
+    for i in range(2, n + 1):
+        data.append(data[i - 1] + data[i - 2])
+
+    return data[n]
+
+
 def main() -> None:
     lookup: dict[int, int] = {}
 
@@ -31,6 +43,7 @@ def main() -> None:
     # a = 30 # to už chvilku trvá
     # a = 40 # za jak dlouho se asi dočkáme?
 
+    measure_time(lambda: fib_iter(a), 100)
     measure_time(lambda: fib_cache(a), 100)
     measure_time(lambda: fib_mem(a, lookup), 100)
     measure_time(lambda: fib(a))

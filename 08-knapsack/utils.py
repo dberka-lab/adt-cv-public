@@ -1,7 +1,6 @@
 import time
 from typing import Callable
 
-
 def measure_time(func: Callable[[], float], ntimes: int = 1) -> float | int:
     ret: float | int = -1
 

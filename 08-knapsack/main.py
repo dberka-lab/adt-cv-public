@@ -1,6 +1,5 @@
 from utils import measure_time
 
-
 # load data 2.616 1:32   ->  score is value, time is weight
 def load_data(path: str) -> tuple[list[float], list[int]]:
     values: list[float] = [] # rating
